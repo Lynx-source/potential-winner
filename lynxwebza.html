@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LynxWebZA - Fast, Smart, Reliable Websites for South African businesses. Affordable web design and development services.">
+    <meta name="keywords" content="web design, South Africa, website development, small business websites, affordable websites">
+    <title>LynxWebZA | Fast. Smart. Reliable Websites.</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" as="style">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com/ajax/libs">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            light: '#003366',
+                            dark: '#5b9bd5'
+                        },
+                        secondary: {
+                            light: '#00AEEF',
+                            dark: '#4fc3f7'
+                        },
+                        light: {
+                            light: '#F5F5F5',
+                            dark: '#1a202c'
+                        },
+                        dark: {
+                            light: '#333333',
+                            dark: '#e2e8f0'
+                        },
+                        bg: {
+                            light: '#ffffff',
+                            dark: '#0f172a'
+                        },
+                        card: {
+                            light: '#f8fafc',
+                            dark: '#1e293b'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'Montserrat', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #003366;
+            --primary-dark: #5b9bd5;
+            --secondary: #00AEEF;
+            --secondary-dark: #4fc3f7;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: theme('colors.bg.light');
+            color: theme('colors.dark.light');
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .dark body {
+            background-color: theme('colors.bg.dark');
+            color: theme('colors.dark.dark');
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .dark .gradient-text {
+            background: linear-gradient(90deg, var(--primary-dark), var(--secondary-dark));
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 174, 239, 0.2);
+        }
+        
+        .dark .card-hover:hover {
+            box-shadow: 0 10px 25px rgba(79, 195, 247, 0.3);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+        
+        .dark .nav-link::after {
+            background: linear-gradient(90deg, var(--primary-dark), var(--secondary-dark));
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .testimonial-card {
+            background: theme('colors.bg.light');
+            border-left: 3px solid var(--primary);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark .testimonial-card {
+            background: theme('colors.card.dark');
+            border-left: 3px solid var(--primary-dark);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        .pricing-card:hover {
+            border-color: var(--secondary);
+            transform: scale(1.03);
+        }
+        
+        .dark .pricing-card:hover {
+            border-color: var(--secondary-dark);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, var(--primary), #005588);
+            transition: all 0.3s ease;
+            color: white;
+        }
+        
+        .dark .btn-primary {
+            background: linear-gradient(90deg, var(--primary-dark), #7ab7e1);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 86, 136, 0.3);
+        }
+        
+        .dark .btn-primary:hover {
+            box-shadow: 0 5px 15px rgba(91, 155, 213, 0.4);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(90deg, var(--secondary), #00C6FF);
+            transition: all 0.3s ease;
+            color: white;
+        }
+        
+        .dark .btn-secondary {
+            background: linear-gradient(90deg, var(--secondary-dark), #81d4fa);
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 174, 239, 0.3);
+        }
+        
+        .dark .btn-secondary:hover {
+            box-shadow: 0 5px 15px rgba(79, 195, 247, 0.4);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            bottom: -8px;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        .dark .section-title:after {
+            background: linear-gradient(90deg, var(--primary-dark), var(--secondary-dark));
+        }
+        
+        /* Animation for theme toggle */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .theme-toggle {
+            transition: all 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+        
+        .theme-toggle.active {
+            animation: spin 0.5s ease;
+        }
+        
+        /* Optimize for mobile */
+        @media (max-width: 640px) {
+            .hero-content {
+                padding-top: 2rem;
+            }
+            
+            .section-padding {
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+            
+            .text-size-mobile {
+                font-size: 1.75rem;
+            }
+        }
+        
+        /* Lazy loading for images */
+        img.lazy {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        img.lazy.loaded {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-light text-dark transition-colors duration-300">
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-900 shadow-md fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <span class="text-2xl font-bold gradient-text">LynxWebZA</span>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-8">
+                            <a href="#home" class="nav-link text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark px-3 py-2 text-sm font-medium">Home</a>
+                            <a href="#portfolio" class="nav-link text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark px-3 py-2 text-sm font-medium">Portfolio</a>
+                            <a href="#services" class="nav-link text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark px-3 py-2 text-sm font-medium">Services</a>
+                            <a href="#pricing" class="nav-link text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark px-3 py-2 text-sm font-medium">Pricing</a>
+                            <a href="#testimonials" class="nav-link text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark px-3 py-2 text-sm font-medium">Testimonials</a>
+                            <a href="#contact" class="nav-link text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark px-3 py-2 text-sm font-medium">Contact</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="theme-toggle p-2 rounded-full focus:outline-none">
+                        <i class="fas fa-moon text-gray-600 dark:text-yellow-300"></i>
+                    </button>
+                    <a href="#contact" class="hidden md:block btn-primary px-6 py-2 rounded-md text-sm font-medium">
+                        Get Started
+                    </a>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark focus:outline-none">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark hover:bg-gray-100 dark:hover:bg-gray-800">Home</a>
+                <a href="#portfolio" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark hover:bg-gray-100 dark:hover:bg-gray-800">Portfolio</a>
+                <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark hover:bg-gray-100 dark:hover:bg-gray-800">Services</a>
+                <a href="#pricing" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark hover:bg-gray-100 dark:hover:bg-gray-800">Pricing</a>
+                <a href="#testimonials" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark hover:bg-gray-100 dark:hover:bg-gray-800">Testimonials</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary-dark hover:bg-gray-100 dark:hover:bg-gray-800">Contact</a>
+                <a href="#contact" class="block btn-primary px-3 py-2 rounded-md text-base font-medium mt-2">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto hero-content">
+        <div class="flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-size-mobile">
+                    Fast. Smart. <span class="gradient-text">Reliable Websites</span> for South African Businesses
+                </h1>
+                <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                    We build beautiful, functional, and affordable websites that help small businesses grow their brand and attract more customers online.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contact" class="btn-primary px-8 py-3 rounded-md text-lg font-semibold text-center">
+                        Get Your Free Quote <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#portfolio" class="btn-secondary px-8 py-3 rounded-md text-lg font-semibold text-center">
+                        View Our Work
+                    </a>
+                </div>
+                <div class="mt-10 flex items-center space-x-4">
+                    <div class="flex -space-x-2">
+                        <img class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-800 lazy" data-src="https://randomuser.me/api/portraits/women/12.jpg" alt="Client">
+                        <img class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-800 lazy" data-src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client">
+                        <img class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-800 lazy" data-src="https://randomuser.me/api/portraits/women/45.jpg" alt="Client">
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">Trusted by <span class="font-bold text-dark dark:text-white">50+</span> South African businesses</p>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <span class="text-sm text-gray-600 dark:text-gray-300 ml-1">5.0 (32 reviews)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2 relative">
+                <div class="relative z-10">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1074 717'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Web Development" class="rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 lazy" loading="lazy">
+                </div>
+                <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-primary-light dark:bg-primary-dark rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+                <div class="absolute -top-6 -right-6 w-32 h-32 bg-secondary-light dark:bg-secondary-dark rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-16 bg-white dark:bg-gray-900 section-padding">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">About LynxWebZA</h2>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1170 780'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="About LynxWebZA" class="rounded-xl shadow-lg lazy" loading="lazy">
+                </div>
+                <div class="md:w-1/2">
+                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+                        At LynxWebZA, we believe every South African business deserves a bold, modern online presence - without the high price tag. We're a proudly South African web solutions company specializing in fast, smart, and reliable websites tailored for small businesses, startups, and professionals.
+                    </p>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+                        From one-page sites to full business portfolios, we build clean, mobile-friendly websites that get results. Our goal is simple: help you grow your brand, attract more customers, and look great online.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex items-center bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-2"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Fast Delivery (5-7 days)</span>
+                        </div>
+                        <div class="flex items-center bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-2"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Mobile-Friendly Designs</span>
+                        </div>
+                        <div class="flex items-center bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-2"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Local Support</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-50 dark:bg-gray-800 section-padding">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">Our <span class="gradient-text">Services</span></h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    Comprehensive digital solutions tailored for South African small businesses and professionals.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white dark:bg-gray-700 rounded-xl p-8 border border-gray-200 dark:border-gray-600 card-hover transition-all duration-300">
+                    <div class="w-14 h-14 bg-primary-light/10 dark:bg-primary-dark/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-laptop-code text-2xl text-primary-light dark:text-primary-dark"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark dark:text-white mb-3">Starter Websites</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Perfect for small businesses needing a simple online presence with 1-3 pages including home, about, and contact.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-2"></i> Responsive design
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-2"></i> Basic SEO setup
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-2"></i> Contact form
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-2"></i> Social media links
+                        </li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center text-primary-light dark:text-primary-dark font-medium hover:text-secondary-light dark:hover:text-secondary-dark">
+                        Get Started <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-white dark:bg-gray-700 rounded-xl p-8 border border-gray-200 dark:border-gray-600 card-hover transition-all duration-300">
+                    <div class="w-14 h-14 bg-primary-light/10 dark:bg-primary-dark/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-briefcase text-2xl text-primary-light dark:text-primary-dark"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark dark:text-white mb-3">Business Websites</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Comprehensive 4-8 page websites for growing businesses needing more content and functionality.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-2"></i> All Starter features
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-2"></i> Additional pages
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-2"></i> Gallery/portfolio
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-2"></i> Services/products
+                        </li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center text-primary-light dark:text-primary-dark font-medium hover:text-secondary-light dark:hover:text-secondary-dark">
+                        Get Started <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-white dark:bg-gray-700 rounded-xl p-8 border border-gray-200 dark:border-gray-600 card-hover transition-all duration-300">
+                    <div class="w-14 h-14 bg-primary-light/10 dark:bg-primary-dark/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-shopping-cart text-2xl text-primary-light dark:text-primary-dark"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark dark:text-white mb-3">E-commerce Sites</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Online stores with product catalog, shopping cart, and secure payment processing.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-2"></i> Product management
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-2"></i> Secure checkout
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-2"></i> Payment integration
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-2"></i> Order tracking
+                        </li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center text-primary-light dark:text-primary-dark font-medium hover:text-secondary-light dark:hover:text-secondary-dark">
+                        Get Started <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="bg-white dark:bg-gray-700 rounded-xl p-8 border border-gray-200 dark:border-gray-600 card-hover transition-all duration-300">
+                    <div class="w-14 h-14 bg-primary-light/10 dark:bg-primary-dark/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-mobile-alt text-2xl text-primary-light dark:text-primary-dark"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark dark:text-white mb-3">Mobile Optimization</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Ensure your website looks and works perfectly on all mobile devices.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-2"></i> Responsive design
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-2"></i> Fast loading
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-2"></i> Touch-friendly
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-2"></i> Mobile testing
+                        </li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center text-primary-light dark:text-primary-dark font-medium hover:text-secondary-light dark:hover:text-secondary-dark">
+                        Get Started <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="bg-white dark:bg-gray-700 rounded-xl p-8 border border-gray-200 dark:border-gray-600 card-hover transition-all duration-300">
+                    <div class="w-14 h-14 bg-primary-light/10 dark:bg-primary-dark/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fab fa-whatsapp text-2xl text-primary-light dark:text-primary-dark"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark dark:text-white mb-3">WhatsApp Integration</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Connect with customers instantly through WhatsApp directly from your website.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-2"></i> Click-to-chat
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-2"></i> Contact buttons
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-2"></i> Quick replies
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-2"></i> Mobile-friendly
+                        </li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center text-primary-light dark:text-primary-dark font-medium hover:text-secondary-light dark:hover:text-secondary-dark">
+                        Get Started <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="bg-white dark:bg-gray-700 rounded-xl p-8 border border-gray-200 dark:border-gray-600 card-hover transition-all duration-300">
+                    <div class="w-14 h-14 bg-primary-light/10 dark:bg-primary-dark/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-tools text-2xl text-primary-light dark:text-primary-dark"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark dark:text-white mb-3">Website Maintenance</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Monthly hosting and maintenance to keep your website secure and up-to-date.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-2"></i> Regular updates
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-2"></i> Security monitoring
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-2"></i> Content updates
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-2"></i> Technical support
+                        </li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center text-primary-light dark:text-primary-dark font-medium hover:text-secondary-light dark:hover:text-secondary-dark">
+                        Get Started <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-white dark:bg-gray-900 section-padding">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">Our <span class="gradient-text">Portfolio</span></h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    Explore websites we've created for South African businesses just like yours.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Portfolio Item 1 -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 card-hover transition-all duration-300">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1170 780'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Salon Website" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110 lazy" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <span class="inline-block px-3 py-1 text-xs font-semibold bg-primary-light dark:bg-primary-dark rounded-full mb-2 text-white">Beauty Salon</span>
+                            <h3 class="text-xl font-bold text-white">Glamour Hair Studio</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">A beautiful website for a local hair salon showcasing their services, stylists, and booking options.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-300">WordPress</span>
+                            <span class="text-xs px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-300">WhatsApp</span>
+                            <span class="text-xs px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-300">Gallery</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center text-primary-light dark:text-primary-dark font-medium hover:text-secondary-light dark:hover:text-secondary-dark">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 2 -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 card-hover transition-all duration-300">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1170 780'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Consulting Website" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110 lazy" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <span class="inline-block px-3 py-1 text-xs font-semibold bg-secondary-light dark:bg-secondary-dark rounded-full mb-2 text-white">Consulting</span>
+                            <h3 class="text-xl font-bold text-white">Mandla Business Solutions</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">A professional website for a business consultant featuring services, testimonials, and blog.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-300">HTML/CSS</span>
+                            <span class="text-xs px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-300">Blog</span>
+                            <span class="text-xs px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-300">SEO</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center text-primary-light dark:text-primary-dark font-medium hover:text-secondary-light dark:hover:text-secondary-dark">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 3 -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 card-hover transition-all duration-300">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1170 780'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="E-commerce Website" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110 lazy" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <span class="inline-block px-3 py-1 text-xs font-semibold bg-emerald-500 rounded-full mb-2 text-white">E-commerce</span>
+                            <h3 class="text-xl font-bold text-white">Zulu Crafts Store</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">An online store selling authentic South African crafts with secure checkout and product catalog.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-300">Shopify</span>
+                            <span class="text-xs px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-300">PayFast</span>
+                            <span class="text-xs px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-300">Product Catalog</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center text-primary-light dark:text-primary-dark font-medium hover:text-secondary-light dark:hover:text-secondary-dark">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-flex items-center px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg text-dark dark:text-white font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                    View All Projects <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-gray-50 dark:bg-gray-800 section-padding">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">Simple, Affordable <span class="gradient-text">Pricing</span></h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    Transparent pricing with no hidden fees. Perfect for South African small businesses.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Starter Plan -->
+                <div class="bg-white dark:bg-gray-700 rounded-xl p-8 border border-gray-200 dark:border-gray-600 pricing-card transition-all duration-300">
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold text-dark dark:text-white mb-2">Starter</h3>
+                        <p class="text-gray-600 dark:text-gray-300">Perfect for small businesses and personal projects</p>
+                    </div>
+                    <div class="mb-8">
+                        <div class="text-4xl font-bold text-dark dark:text-white mb-2">R2,000</div>
+                        <div class="text-gray-600 dark:text-gray-300">one-time payment</div>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-3"></i> 1-3 Page Website
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-3"></i> Responsive Design
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-3"></i> Basic SEO Setup
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-3"></i> Contact Form
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300 opacity-50">
+                            <i class="fas fa-times-circle text-gray-400 dark:text-gray-500 mr-3"></i> E-commerce Functionality
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300 opacity-50">
+                            <i class="fas fa-times-circle text-gray-400 dark:text-gray-500 mr-3"></i> Advanced Features
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn-primary w-full text-center px-6 py-3 rounded-md font-medium">
+                        Get Started
+                    </a>
+                </div>
+                
+                <!-- Popular Plan -->
+                <div class="bg-white dark:bg-gray-700 rounded-xl p-8 border-2 border-primary-light dark:border-primary-dark pricing-card transform scale-105 transition-all duration-300 relative">
+                    <div class="absolute top-0 right-0 bg-primary-light dark:bg-primary-dark text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">
+                        MOST POPULAR
+                    </div>
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold text-dark dark:text-white mb-2">Business</h3>
+                        <p class="text-gray-600 dark:text-gray-300">Ideal for growing businesses with more content</p>
+                    </div>
+                    <div class="mb-8">
+                        <div class="text-4xl font-bold text-dark dark:text-white mb-2">R3,500</div>
+                        <div class="text-gray-600 dark:text-gray-300">one-time payment</div>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-3"></i> 4-8 Page Website
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-3"></i> All Starter Features
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-3"></i> Gallery/Portfolio
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-3"></i> Services/Products
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-3"></i> Basic Blog
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300 opacity-50">
+                            <i class="fas fa-times-circle text-gray-400 dark:text-gray-500 mr-3"></i> E-commerce
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn-primary w-full text-center px-6 py-3 rounded-md font-medium">
+                        Get Started
+                    </a>
+                </div>
+                
+                <!-- E-commerce Plan -->
+                <div class="bg-white dark:bg-gray-700 rounded-xl p-8 border border-gray-200 dark:border-gray-600 pricing-card transition-all duration-300">
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold text-dark dark:text-white mb-2">E-commerce</h3>
+                        <p class="text-gray-600 dark:text-gray-300">For businesses selling products online</p>
+                    </div>
+                    <div class="mb-8">
+                        <div class="text-4xl font-bold text-dark dark:text-white mb-2">R5,000</div>
+                        <div class="text-gray-600 dark:text-gray-300">one-time payment</div>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-3"></i> Product Catalog
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-3"></i> Shopping Cart
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-3"></i> Secure Checkout
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-3"></i> Payment Integration
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-3"></i> Order Management
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-secondary-light dark:text-secondary-dark mr-3"></i> Basic Business Features
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn-primary w-full text-center px-6 py-3 rounded-md font-medium">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl p-8 max-w-4xl mx-auto">
+                <h3 class="text-xl font-bold text-dark dark:text-white mb-4 text-center">Website Maintenance Plan</h3>
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Keep your website secure, updated, and performing at its best with our monthly maintenance plan.
+                        </p>
+                    </div>
+                    <div class="mt-4 md:mt-0">
+                        <span class="text-3xl font-bold text-dark dark:text-white">R300</span>
+                        <span class="text-gray-600 dark:text-gray-300">/month</span>
+                    </div>
+                </div>
+                <div class="text-center mt-6">
+                    <a href="#contact" class="inline-flex items-center px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg text-dark dark:text-white font-medium hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+                        Add Maintenance Plan <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-primary-light/10 dark:bg-primary-dark/10 border border-primary-light dark:border-primary-dark rounded-xl p-8 max-w-4xl mx-auto">
+                <h3 class="text-xl font-bold text-dark dark:text-white mb-4 text-center">Need something different?</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-center mb-6">
+                    We offer custom solutions tailored to your specific requirements. Get in touch to discuss your project.
+                </p>
+                <div class="text-center">
+                    <a href="#contact" class="inline-flex items-center px-6 py-3 border border-primary-light dark:border-primary-dark rounded-lg text-primary-light dark:text-primary-dark font-medium hover:bg-primary-light hover:text-white dark:hover:bg-primary-dark dark:hover:text-white transition-colors">
+                        Request Custom Quote <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="py-20 bg-white dark:bg-gray-900 section-padding">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">Our Simple <span class="gradient-text">Process</span></h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    From concept to launch, we make website development easy and stress-free.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Step 1 -->
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-primary-light/10 dark:bg-primary-dark/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-primary-light dark:text-primary-dark">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark dark:text-white mb-3">Consultation</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        We discuss your needs, goals, and vision for your website.
+                    </p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-primary-light/10 dark:bg-primary-dark/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-primary-light dark:text-primary-dark">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark dark:text-white mb-3">Design</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        We create mockups for your approval before development.
+                    </p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-primary-light/10 dark:bg-primary-dark/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-primary-light dark:text-primary-dark">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark dark:text-white mb-3">Development</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        We build your website with your approved design and features.
+                    </p>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-primary-light/10 dark:bg-primary-dark/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-primary-light dark:text-primary-dark">4</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark dark:text-white mb-3">Launch</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        We deploy your website and provide training on managing it.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-secondary-light/10 dark:bg-secondary-dark/10 border border-secondary-light dark:border-secondary-dark rounded-xl p-8 max-w-4xl mx-auto">
+                <h3 class="text-xl font-bold text-dark dark:text-white mb-4 text-center">Fast Delivery Guarantee</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-center mb-6">
+                    We deliver most websites within <span class="font-bold">5-7 business days</span> after final approval of design and content.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#contact" class="btn-primary px-8 py-3 rounded-md text-lg font-semibold text-center">
+                        Start Your Project <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-50 dark:bg-gray-800 section-padding">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">What Our <span class="gradient-text">Clients Say</span></h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    Don't just take our word for it. Here's what South African business owners say about working with us.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card rounded-lg p-8">
+                    <div class="flex items-center mb-6">
+                        <img class="w-12 h-12 rounded-full mr-4 lazy" data-src="https://randomuser.me/api/portraits/women/43.jpg" alt="Nomsa Khumalo" loading="lazy">
+                        <div>
+                            <h4 class="text-dark dark:text-white font-medium">Nomsa Khumalo</h4>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm">Owner, Glamour Hair Studio</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-6">
+                        "LynxWebZA created a beautiful website for my salon that has brought in so many new clients. The WhatsApp booking button has been a game-changer for my business!"
+                    </p>
+                    <div class="flex items-center">
+                        <div class="flex mr-2">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card rounded-lg p-8">
+                    <div class="flex items-center mb-6">
+                        <img class="w-12 h-12 rounded-full mr-4 lazy" data-src="https://randomuser.me/api/portraits/men/32.jpg" alt="Mandla Dlamini" loading="lazy">
+                        <div>
+                            <h4 class="text-dark dark:text-white font-medium">Mandla Dlamini</h4>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm">Founder, Mandla Business Solutions</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-6">
+                        "As a consultant, my website needed to reflect professionalism. LynxWebZA delivered exactly that at an affordable price. I've gotten several clients through my website already."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="flex mr-2">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card rounded-lg p-8">
+                    <div class="flex items-center mb-6">
+                        <img class="w-12 h-12 rounded-full mr-4 lazy" data-src="https://randomuser.me/api/portraits/women/65.jpg" alt="Thandiwe Mbeki" loading="lazy">
+                        <div>
+                            <h4 class="text-dark dark:text-white font-medium">Thandiwe Mbeki</h4>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm">Owner, Zulu Crafts Store</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-6">
+                        "My online store has doubled my sales since LynxWebZA built it. They made the whole process so easy and explained everything in simple terms. Highly recommend!"
+                    </p>
+                    <div class="flex items-center">
+                        <div class="flex mr-2">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#" class="inline-flex items-center px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg text-dark dark:text-white font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                    View More Testimonials <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-primary-light to-secondary-light dark:from-primary-dark dark:to-secondary-dark section-padding">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Grow Your Business Online?</h2>
+            <p class="text-xl text-white/90 mb-8">
+                Let's discuss how we can help you attract more customers with a professional website.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contact" class="bg-white text-primary-light dark:text-primary-dark px-8 py-4 rounded-md text-lg font-semibold hover:bg-gray-100 transition-colors">
+                    Get Your Free Consultation <i class="fas fa-calendar-check ml-2"></i>
+                </a>
+                <a href="https://wa.me/27123456789" class="bg-dark text-white px-8 py-4 rounded-md text-lg font-semibold hover:bg-gray-800 transition-colors">
+                    Chat on WhatsApp <i class="fab fa-whatsapp ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white dark:bg-gray-900 section-padding">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">Frequently Asked <span class="gradient-text">Questions</span></h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300">
+                    Find answers to common questions about our services and process.
+                </p>
+            </div>
+            
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-6 text-left">
+                        <h3 class="text-lg font-medium text-dark dark:text-white">How long does it take to build a website?</h3>
+                        <i class="fas fa-chevron-down text-gray-500 dark:text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-6 hidden">
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Most of our websites are completed within 5-7 business days after we receive all your content and final approval on the design. More complex e-commerce sites may take up to 10 business days.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-6 text-left">
+                        <h3 class="text-lg font-medium text-dark dark:text-white">What's included in your pricing?</h3>
+                        <i class="fas fa-chevron-down text-gray-500 dark:text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-6 hidden">
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Our pricing includes design, development, basic SEO setup, and deployment. Domain registration and hosting are not included but we can help you set these up. Maintenance plans are available separately.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-6 text-left">
+                        <h3 class="text-lg font-medium text-dark dark:text-white">Do I need to pay a deposit?</h3>
+                        <i class="fas fa-chevron-down text-gray-500 dark:text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-6 hidden">
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Yes, we require a 50% deposit to begin work on your project. The remaining 50% is due before we publish your website live. We accept EFT payments and provide professional invoices.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-6 text-left">
+                        <h3 class="text-lg font-medium text-dark dark:text-white">Can I update my website myself?</h3>
+                        <i class="fas fa-chevron-down text-gray-500 dark:text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-6 hidden">
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Yes! We build most websites with user-friendly content management systems (like WordPress) that allow you to easily update text, images, and blog posts. We'll provide basic training when we deliver your website.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-6 text-left">
+                        <h3 class="text-lg font-medium text-dark dark:text-white">What if I need changes after launch?</h3>
+                        <i class="fas fa-chevron-down text-gray-500 dark:text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-6 hidden">
+                        <p class="text-gray-600 dark:text-gray-300">
+                            We include 2 rounds of minor revisions in our pricing. After that, we charge R250/hour for additional changes or you can sign up for our monthly maintenance plan which includes 2 hours of updates per month.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                    Didn't find the answer you're looking for?
+                </p>
+                <a href="#contact" class="inline-flex items-center px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg text-dark dark:text-white font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                    Contact Us <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-800 section-padding">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 section-title">Get In <span class="gradient-text">Touch</span></h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                        Have a project in mind or want to discuss how we can help your business? Fill out the form and we'll get back to you within 24 hours.
+                    </p>
+                    
+                    <div class="space-y-6 mb-10">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-primary-light/10 dark:bg-primary-dark/10 p-3 rounded-lg mr-4">
+                                <i class="fas fa-envelope text-primary-light dark:text-primary-dark text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-dark dark:text-white font-medium mb-1">Email Us</h4>
+                                <a href="mailto:lynxwebza@gmail.com" class="text-gray-600 dark:text-gray-300 hover:text-primary-light dark:hover:text-primary-dark transition-colors">lynxwebza@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-primary-light/10 dark:bg-primary-dark/10 p-3 rounded-lg mr-4">
+                                <i class="fab fa-whatsapp text-primary-light dark:text-primary-dark text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-dark dark:text-white font-medium mb-1">WhatsApp</h4>
+                                <a href="https://wa.me/27123456789" class="text-gray-600 dark:text-gray-300 hover:text-primary-light dark:hover:text-primary-dark transition-colors">+27 12 345 6789</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-primary-light/10 dark:bg-primary-dark/10 p-3 rounded-lg mr-4">
+                                <i class="fab fa-instagram text-primary-light dark:text-primary-dark text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-dark dark:text-white font-medium mb-1">Instagram</h4>
+                                <a href="https://instagram.com/lynxwebza" class="text-gray-600 dark:text-gray-300 hover:text-primary-light dark:hover:text-primary-dark transition-colors">@lynxwebza</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="text-dark dark:text-white font-medium mb-4">Business Hours</h4>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Monday - Friday: 9:00 AM - 5:00 PM<br>
+                            Saturday: 9:00 AM - 1:00 PM<br>
+                            Sunday: Closed
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-700 rounded-xl p-8 border border-gray-200 dark:border-gray-600 shadow-sm">
+                    <form id="contactForm" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Full Name*</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark focus:border-transparent text-dark dark:text-white placeholder-gray-500 dark:placeholder-gray-400">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email Address*</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark focus:border-transparent text-dark dark:text-white placeholder-gray-500 dark:placeholder-gray-400">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark focus:border-transparent text-dark dark:text-white placeholder-gray-500 dark:placeholder-gray-400">
+                        </div>
+                        <div>
+                            <label for="service" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Service Interested In*</label>
+                            <select id="service" name="service" class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark focus:border-transparent text-dark dark:text-white">
+                                <option value="">Select a service</option>
+                                <option value="starter">Starter Website (1-3 pages)</option>
+                                <option value="business">Business Website (4-8 pages)</option>
+                                <option value="ecommerce">E-commerce Website</option>
+                                <option value="mobile">Mobile Optimization</option>
+                                <option value="whatsapp">WhatsApp Integration</option>
+                                <option value="maintenance">Website Maintenance</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Message*</label>
+                            <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark focus:border-transparent text-dark dark:text-white placeholder-gray-500 dark:placeholder-gray-400"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn-primary w-full px-6 py-4 rounded-md font-medium">
+                                Send Message <i class="fas fa-paper-plane ml-2"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8 text-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold gradient-text mb-4">LynxWebZA</h3>
+                    <p class="text-gray-300 mb-6">
+                        Fast. Smart. Reliable Websites for South African small businesses and professionals.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://instagram.com/lynxwebza" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center text-white hover:bg-primary-light dark:hover:bg-primary-dark transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/27123456789" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center text-white hover:bg-green-500 transition-colors">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="mailto:lynxwebza@gmail.com" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center text-white hover:bg-secondary-light dark:hover:bg-secondary-dark transition-colors">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-medium mb-4">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#services" class="text-gray-300 hover:text-secondary-light dark:hover:text-secondary-dark transition-colors">Starter Websites</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-secondary-light dark:hover:text-secondary-dark transition-colors">Business Websites</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-secondary-light dark:hover:text-secondary-dark transition-colors">E-commerce Sites</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-secondary-light dark:hover:text-secondary-dark transition-colors">Mobile Optimization</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-secondary-light dark:hover:text-secondary-dark transition-colors">WhatsApp Integration</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-secondary-light dark:hover:text-secondary-dark transition-colors">Website Maintenance</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-medium mb-4">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-300 hover:text-secondary-light dark:hover:text-secondary-dark transition-colors">Home</a></li>
+                        <li><a href="#portfolio" class="text-gray-300 hover:text-secondary-light dark:hover:text-secondary-dark transition-colors">Portfolio</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-secondary-light dark:hover:text-secondary-dark transition-colors">Services</a></li>
+                        <li><a href="#pricing" class="text-gray-300 hover:text-secondary-light dark:hover:text-secondary-dark transition-colors">Pricing</a></li>
+                        <li><a href="#testimonials" class="text-gray-300 hover:text-secondary-light dark:hover:text-secondary-dark transition-colors">Testimonials</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-secondary-light dark:hover:text-secondary-dark transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-medium mb-4">Contact Info</h4>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-secondary-light dark:text-secondary-dark"></i>
+                            <a href="mailto:lynxwebza@gmail.com" class="hover:text-secondary-light dark:hover:text-secondary-dark transition-colors">lynxwebza@gmail.com</a>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fab fa-whatsapp mt-1 mr-3 text-secondary-light dark:text-secondary-dark"></i>
+                            <a href="https://wa.me/27123456789" class="hover:text-secondary-light dark:hover:text-secondary-dark transition-colors">+27 12 345 6789</a>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-secondary-light dark:text-secondary-dark"></i>
+                            <span>South Africa (Remote Services)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-300 mb-4 md:mb-0">
+                    &copy; 2023 LynxWebZA. All rights reserved.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-300 hover:text-secondary-light dark:hover:text-secondary-dark transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-gray-300 hover:text-secondary-light dark:hover:text-secondary-dark transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary-light dark:bg-primary-dark text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-opacity-90">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // FAQ accordion
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('i');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+                
+                // Close other open FAQs
+                faqToggles.forEach(otherToggle => {
+                    if (otherToggle !== toggle) {
+                        otherToggle.nextElementSibling.classList.add('hidden');
+                        otherToggle.querySelector('i').classList.remove('rotate-180');
+                    }
+                });
+            });
+        });
+        
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // Check for saved user preference or use system preference
+        const userTheme = localStorage.getItem('theme');
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (userTheme === 'dark' || (!userTheme && systemTheme)) {
+            html.classList.add('dark');
+            themeToggle.innerHTML = '<i class="fas fa-sun text-yellow-300"></i>';
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            themeToggle.classList.add('active');
+            setTimeout(() => {
+                themeToggle.classList.remove('active');
+            }, 500);
+            
+            if (html.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun text-yellow-300"></i>';
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeToggle.innerHTML = '<i class="fas fa-moon text-gray-600"></i>';
+            }
+        });
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send the form data to your server
+            // For this example, we'll just show an alert
+            alert(`Thank you, ${name}! Your message has been received. We'll contact you soon at ${email}.`);
+            
+            // Reset form
+            contactForm.reset();
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Lazy loading for images
+        const lazyLoadImages = () => {
+            const lazyImages = document.querySelectorAll('img.lazy');
+            
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.add('loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+            
+            lazyImages.forEach(img => {
+                observer.observe(img);
+            });
+        };
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            lazyLoadImages();
+            
+            // Add animation class to elements when they come into view
+            const animateOnScroll = () => {
+                const elements = document.querySelectorAll('.card-hover, .pricing-card, .testimonial-card');
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('animate-fade-in');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1
+                });
+                
+                elements.forEach(element => {
+                    observer.observe(element);
+                });
+            };
+            
+            animateOnScroll();
+        });
+    </script>
+</body>
+</html>
